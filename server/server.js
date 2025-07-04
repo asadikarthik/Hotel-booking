@@ -8,9 +8,10 @@ import clerkWebhooks from "./controllers/clerkWebhooks.js";
 connectDB()
 
 const app = express()
-
 app.use(cors())
 
+
+// Middleware
 app.use(express.json())
 app.use(clerkMiddleware())
 
