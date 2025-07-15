@@ -9,7 +9,7 @@ const Testimonial = () => {
       <Title
         title='What Our Guests Say'
         subtitle='Discover why discerning travelers consistently choose
-         QuickStay for their exclusive and luxurious accommodations around the world.'
+          LuxeNest for their exclusive and luxurious accommodations around the world.'
       />
         <div className="flex flex-wrap items-center justify-center gap-6 mt-20 mb-10">
                 {testimonials.map((testimonial) => (
