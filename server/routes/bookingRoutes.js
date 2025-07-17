@@ -15,6 +15,6 @@ bookingRouter.post('/book', protect, createBooking);
 bookingRouter.get('/user', protect, getUserBookings);
 bookingRouter.get('/hotel', protect, getHotelBookings);
 
-bookingRouter.post('/stripe-payment',protect, stripePayment);
+bookingRouter.post('/stripe-payment', protect, stripePayment);
 
 export default bookingRouter;

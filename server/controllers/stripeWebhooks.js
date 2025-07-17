@@ -9,9 +9,10 @@ export const stripeWebhooks = async (request, response) => {
   let event;
 
   try {
-    event = stripeInstance.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET)
+      event = stripeInstance.webhooks.constructEvent(request.body, sig, 
+        process.env.STRIPE_WEBHOOK_SECRET)
   } catch (err) {
-    response.status(400).send(`Webhook Error: ${err.message}`)
+      response.status(400).send(`Webhook Error: ${err.message}`)
   }
 
   // Handle the event
@@ -24,19 +25,12 @@ export const stripeWebhooks = async (request, response) => {
       payment_intent: paymentIntentId,
     });
 
-    const {
-      bookingId
-    } = session.data[0].metadata;
+    const { bookingId } = session.data[0].metadata;
     // Mark Payment as Paid
-    await Booking.findByIdAndUpdate(bookingId, {
-      isPaid: true,
-      paymentMethod: "Stripe"
-    });
-  } else {
+    await Booking.findByIdAndUpdate(bookingId, {isPaid: true, paymentMethod: "Stripe"});
+  } else{
     console.log("Unhandled event type :", event.type)
   }
-  response.json({
-    received: true
-  });
+  response.json({received: true});
 }
 
